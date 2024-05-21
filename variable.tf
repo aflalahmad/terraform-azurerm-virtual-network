@@ -1,11 +1,4 @@
-variable "vnet-name" {
-    type = string
 
-     validation {
-    condition     = can(regex("^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*$", var.vnet-name))
-    error_message = "The virtual network name must be a non-empty string containing only alphanumeric characters and hyphens, and cannot start or end with a hyphen."
-  }
-}
 variable "rg-details" {
     type = string
     validation {
