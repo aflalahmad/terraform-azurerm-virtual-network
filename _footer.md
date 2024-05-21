@@ -1,0 +1,1 @@
+This is sample virtula network and subnet using terraform module for learning purpose ny Aflal.
