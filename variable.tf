@@ -1,5 +1,12 @@
+variable "vnet-name" {
+    type = string
 
-variable "rg-details" {
+     validation {
+    condition     = can(regex("^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*$", var.vnet-name))
+    error_message = "The virtual network name must be a non-empty string containing only alphanumeric characters and hyphens, and cannot start or end with a hyphen."
+  }
+}
+variable "resourcegroup_name" {
     type = string
     validation {
       condition = length(var.rg-details)>0
@@ -46,10 +53,9 @@ variable "subnet-name" {
 variable "environment"{
   type = string
   description = "Environment variable value"
-  default="dev"
 }
 variable "vnet_purpose"{
   type = string
   description = "vnet_purpose variable value"
-  default="demo"
+
 }

@@ -13,6 +13,8 @@ provider "azurerm" {
   
 }
 
+
+
 variable "environment" {
     type = string
     default = "dev"
@@ -21,21 +23,22 @@ variable "environment" {
 
 variable "vnet_purpose" {
   type = string
-  default = "demo"
+  default = "homework2vnet"
 }
-
 
 data "azurerm_resource_group" "existing_rg" {
-  name = "dev-demo-rg"  
+  name = "dev-Homework2-rg"  
 }
+
+
 module "virtual_network" {
     source  = "aflalahmad/virtual-network/azurerm"
     version = "0.0.1"
-    vnet-name = module.naming.virtual_network.name
+    vnet-name ="dev-homework2-vnet1"
     address_space = ["10.1.0.0/16"]
-    rg-details = data.azurerm_resource_group.existing_rg
+    rg-details = data.azurerm_resource_group.existing_rg.name
     location = "eastus"
-    subnet-name     = {
+    subnet-name =   {
     subnet1 = {
       name    = "subnet1"
       newbits = 8
@@ -58,7 +61,6 @@ module "virtual_network" {
     }
     
   }
-  environment = var.environment
-  vnet_purpose = var.vnet_purpose
+    
   
 }
