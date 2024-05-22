@@ -9,7 +9,7 @@ variable "vnet-name" {
 variable "resourcegroup_name" {
     type = string
     validation {
-      condition = length(var.rg-details)>0
+      condition = length(var.resourcegroup_name)>0
       error_message = "The resource group must not be empty"
     }
   

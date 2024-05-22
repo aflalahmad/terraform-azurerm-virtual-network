@@ -33,10 +33,10 @@ data "azurerm_resource_group" "existing_rg" {
 
 module "virtual_network" {
     source  = "aflalahmad/virtual-network/azurerm"
-    version = "0.0.1"
+    version = "0.0.2"
     vnet-name ="dev-homework2-vnet1"
     address_space = ["10.1.0.0/16"]
-    rg-details = data.azurerm_resource_group.existing_rg.name
+    resourcegroup_name= data.azurerm_resource_group.existing_rg.name
     location = "eastus"
     subnet-name =   {
     subnet1 = {
@@ -61,6 +61,8 @@ module "virtual_network" {
     }
     
   }
+  environment = var.environment
+  vnet_purpose = var.vnet_purpose
     
   
 }
